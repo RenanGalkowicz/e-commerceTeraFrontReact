@@ -35,7 +35,7 @@ export default function AppNavbar() {
               <NavDropdown.Item href="#action6">Admin</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#action2">Contatos</Nav.Link>
-            <Nav.Link href="#">Login / Cadastre-se</Nav.Link>
+            <Nav.Link href="/login">Login / Cadastre-se</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control

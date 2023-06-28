@@ -146,6 +146,12 @@ h5 {
     font-size: 70%;
 }
 
+h2 {
+    margin-top: 1%;
+    margin-left: 19%;
+    align-items: center;
+}
+
 .imgconteudo {
     width: 30rem;
     margin-top: 2%;
