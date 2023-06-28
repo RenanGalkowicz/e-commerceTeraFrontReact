@@ -1,57 +1,43 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-
-import logo from "../../images/logo.svg";
-import Loading from "../atoms/Loading";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+/* eslint jsx-a11y/anchor-is-valid: 0 */
+import React from "react";
+import AppCarousel from "../organisms/AppCarousel";
+import Default from "../templates/Default";
 
 export default function Home() {
-  const navigate = useNavigate();
-
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-
-  const [users, setUsers] = useState([]);
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("https://63cf09718a780ae6e6710dbe.mockapi.io/users")
-      .then((response) => response.json())
-      .then((data) => {
-        setUsers(data);
-        setIsLoading(false);
-      });
-  }, []);
-
-  return isLoading ? (
-    <Loading />
-  ) : (
-    <div className="home center">
-      <div className="home__logo">
-        <img src={logo} className="responsive" alt="" />
-      </div>
-      <select
-        onChange={(event) => setCurrentUser(event.target.value)}
-        className="home__select-users"
-        defaultValue={currentUser}
-      >
-        <option value="">Selecione um usuário</option>
-        {users
-          .sort((a, b) => a.fn.localeCompare(b.fn))
-          .map((user) => (
-            <option value={user.id} key={user.id}>
-              {user.fn} {user.ln}
-            </option>
-          ))}
-      </select>
-      {!!currentUser && (
-        <button
-          onClick={() => navigate(`/users/${currentUser}`)}
-          className="button-primary"
-        >
-          Entrar
-        </button>
-      )}
+  return (
+    <div>
+      <Default>
+        <main>
+          <AppCarousel />
+          <section>
+            <div>
+              <div className="col col-6 conteudo">
+                <img src="images/proj2.png" alt="" className="imgconteudo" />
+              </div>
+              <div className="col col-6 conteudo">
+                <img src="images/Proj1.png" alt="" className="imgconteudo" />
+              </div>
+              <div className="col col-12 conteudo3" style={{ widows: "50%" }}>
+                <img src="images/proj3.png" alt="" className="imgconteudo3" />
+              </div>
+            </div>
+          </section>
+          <h2
+            style={{ marginTop: "1%", marginLeft: "19%", alignItems: "center" }}
+          >
+            Produtos mais vendidos
+          </h2>
+          <section id="mais_vendidos">
+            <div className="container text-center">
+              <div
+                className="row align-items-center"
+                id="itensMaisVendidos"
+                style={{ marginLeft: "8.5%" }}
+              ></div>
+            </div>
+          </section>
+        </main>
+      </Default>
     </div>
   );
 }
