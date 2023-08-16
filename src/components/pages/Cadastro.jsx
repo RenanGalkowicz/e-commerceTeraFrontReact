@@ -48,15 +48,14 @@ export default function Cadastro() {
       setFirstName("");
       setLastName("");
       setCpf("");
+      setEmail("");
       setZipcode("");
       setStreet("");
-      setNeighborhood("");
       setNumber("");
       setcomplement("");
-      setEmail("");
+      setNeighborhood("");
       setPassword("");
       setConfPassword("");
-      setStreet("");
     });
   };
 
