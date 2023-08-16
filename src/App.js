@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import {
   BrowserRouter,
   Routes,
@@ -20,4 +20,41 @@ function App() {
       </BrowserRouter>
 )}
 
+export default App;*/
+
+import React from "react"
+import {Routes, Route, BrowserRouter,} from "react-router-dom";
+
+import "./styles/style.css"
+
+import Home from "./components/pages/Home";
+import Login from "./components/pages/Login"
+import Contato from "./components/pages/Contato";
+import Cadastro from "./components/pages/Cadastro";
+import Admin from "./components/pages/Admin";
+import Masc from "./components/pages/Masc";
+import Fem from "./components/pages/Fem";
+import Infan from "./components/pages/Infan";
+
+
+function App() {
+  return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/contato" element={<Contato />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/masc" element={<Masc />} />
+          <Route path="/fem" element={<Fem />} />
+          <Route path="/infan" element={<Infan />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+
+
+
+        </Routes>  
+      </BrowserRouter>
+)}
+
 export default App;
+

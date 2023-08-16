@@ -1,4 +1,4 @@
-* {
+/** {
     margin: 0;
     padding: 0;
     border: 0;
@@ -209,4 +209,242 @@ footer {
 
 .card {
     margin-top: 2%;
+}*/
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+}
+
+.col {
+    margin-top: 0.5%;
+}
+
+.headder {
+    padding-top: 0;
+}
+
+.headder,
+.footer {
+    min-height: 15vh;
+}
+
+@media(min-width:720px) {
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 49%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+}
+
+.logo {
+    padding: 2px;
+    max-width: 9.2em;
+}
+
+.nav-link {
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+}
+
+#navbarapp {
+    background-color: #5166A8;
+}
+
+.nav-item :hover {
+    font-size: larger;
+}
+
+.btn {
+    background-color: #fff;
+    color: #5166A8;
+    border-color: #fff;
+}
+
+#sacolinha {
+    max-width: 2.5em;
+}
+
+.navbar-toggler {
+    background-color: white;
+    color: #5166A8;
+
+}
+
+.navbar-toggler:hover {
+    background-color: #5166A8;
+    border-color: white;
+}
+
+.btn-outline-success:hover {
+    background-color: #5166A8;
+    border-color: white;
+    scale: 1.1;
+}
+
+footer {
+    width: 100%;
+    background: #5166A8;
+    padding: 2%;
+    color: white;
+    margin-top: 2%;
+}
+
+.redessociais img {
+    padding: 0 2px;
+    width: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#site_seguro img {
+    width: 10rem;
+    margin-bottom: 0.5rem;
+}
+
+#formas-pagto {
+    width: 45rem
+}
+
+#formas-pagto img {
+    width: 50%;
+    margin-bottom: 0.5rem;
+}
+
+h5 {
+    font-size: 70%;
+}
+
+h2 {
+    margin-top: 1%;
+    margin-left: 19%;
+    align-items: center;
+}
+
+.imgconteudo {
+    width: 30rem;
+    margin-top: 2%;
+}
+
+.form-login {
+    background-color: #5166A8;
+    color: white;
+}
+
+label {
+    color: black;
+}
+
+#lembrese {
+    color: #fff;
+}
+
+footer {
+    margin: 0;
+}
+
+#loginButton {
+    background-color: #5166A8;
+}
+
+#cadastroButton {
+    color: #5166A8;
+}
+
+#formulario_contato {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding: 2%;
+    background-color: #5166A8;
+    border-radius: 2%;
+}
+
+#formCadastroUsuario {
+    margin-left: 8%;
+    margin-right: 8%;
+    background-color: #5166A8;
+    padding: 1rem;
+    border-radius: 1rem;
+
+}
+
+#formLogin {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-right: 8%;
+    background-color: #5166A8;
+    padding: 1rem;
+    border-radius: 1rem;
+    
+
+}
+
+.btn-primary {
+    color: #5166A8;
+    background-color: white;
+    border-color: white;
+}
+
+.card {
+    margin-top: 2%;
+}
+
+.lineForm{
+    display: flex;
+    
+}
+
+#fnUsr{
+    margin-left: 15%;
+    width: 100%;
+}
+
+.envelopeForm{
+    margin: 5%;
 }
