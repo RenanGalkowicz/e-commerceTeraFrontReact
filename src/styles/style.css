@@ -405,9 +405,9 @@ footer {
     border-radius: 2%;
 }
 
-#formCadastroUsuario {
-    margin-left: 8%;
-    margin-right: 8%;
+#formCadastro {
+   margin-right: 8%;
+   margin-left: 8%;
     background-color: #5166A8;
     padding: 1rem;
     border-radius: 1rem;
@@ -440,9 +440,8 @@ footer {
     
 }
 
-#fnUsr{
-    margin-left: 15%;
-    width: 100%;
+#text-center{
+    text-align: center;
 }
 
 .envelopeForm{

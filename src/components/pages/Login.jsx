@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Default from "../templates/Default";
-import { Link } from "react-router-dom";
 
 export default function Login() {
   const [user, setUser] = useState("");
@@ -9,7 +8,7 @@ export default function Login() {
   const cadLogin = (event) => {
     event.preventDefault();
 
-    fetch(`https://api-cadastro.onrender.com`, {
+    fetch(`https://cadusers.onrender.com/user/login`, {
       method: "POST",
       body: JSON.stringify({ user, password }),
       headers: { "Content-Type": "application/json" },
@@ -58,13 +57,6 @@ export default function Login() {
             style={{ marginTop: "1.5%" }}
           >
             Entrar
-          </button>
-
-          <button
-            className="btn btn-lg btn-outline-success"
-            style={{ marginTop: "1.5%", marginLeft: "5%" }}
-          >
-            <Link to="/cadastro"> cadastre-se</Link>
           </button>
         </form>
       </main>

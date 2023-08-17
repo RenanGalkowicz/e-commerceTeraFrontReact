@@ -1,59 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Default from "../templates/Default";
 
-export default function Cadastro() {
+export default function UserPostForm() {
+  const [cpf, setCpf] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [cpf, setCpf] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [street, setStreet] = useState("");
-  const [neighborhood, setNeighborhood] = useState("");
   const [number, setNumber] = useState("");
-  const [complement, setcomplement] = useState("");
+  const [complement, setComplement] = useState("");
+  const [neighborhood, setNeighborhood] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confpassword, setConfPassword] = useState("");
 
-  useEffect(() => {
-    fetch(`https://cadusers.onrender.com/create/getall`)
-      .then((response) => response.json())
-      .then((data) => {
-        const listzipcode = data;
-
-        //listzipcode.map((zipcodes) => console.log(zipcodes.marca));
-        console.log(listzipcode);
-      });
-  }, []);
-
-  const cadUser = (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    fetch(`https://cadusers.onrender.com/create/user`, {
+    fetch(`https://cadusers.onrender.com/user/createUser`, {
       method: "POST",
       body: JSON.stringify({
+        cpf,
         firstName,
         lastName,
-        cpf,
-        email,
         zipcode,
         street,
         number,
         complement,
         neighborhood,
+        email,
         password,
         confpassword,
       }),
       headers: { "Content-Type": "application/json" },
     }).then(() => {
+      setCpf("");
       setFirstName("");
       setLastName("");
-      setCpf("");
-      setEmail("");
       setZipcode("");
       setStreet("");
       setNumber("");
-      setcomplement("");
+      setComplement("");
       setNeighborhood("");
+      setEmail("");
       setPassword("");
       setConfPassword("");
     });
@@ -62,19 +51,16 @@ export default function Cadastro() {
   return (
     <Default>
       <main style={{ margin: "2%" }}>
-        <form onSubmit={cadUser} id="formCadastroUsuario">
-          <h2
-            style={{
-              color: "white",
-              marginLeft: "60%",
-              transform: "translateX(-50%)",
-            }}
-          >
-            Cadastro de Usuário
-          </h2>
-          <div className="envelopeForm">
+        <form onSubmit={handleFormSubmit} id="formCadastro">
+          <h2 style={{ color: "white" }}>Cadastro de Usuário</h2>
+
+          <div className="row g-3">
             <div className="col">
-              <label className="form-label" style={{ color: "white" }}>
+              <label
+                htmlFor="cpf"
+                className="form-label"
+                style={{ color: "white" }}
+              >
                 CPF
               </label>
               <input
@@ -82,79 +68,54 @@ export default function Cadastro() {
                 onChange={(event) => setCpf(event.target.value)}
                 type="text"
                 className="form-control"
-                id="cpfUsr"
+                id="cpf"
                 placeholder="Insira seu CPF"
+                required="true"
               />
             </div>
-            <div className="lineForm">
-              <div className="col-5">
-                <div>
-                  <label style={{ color: "white" }}>Nome</label>
-                  <input
-                    value={firstName}
-                    onChange={(event) => setFirstName(event.target.value)}
-                    type="text"
-                    className="form-control"
-                    id="nomeProd"
-                    placeholder="Insira seu nome"
-                  />
-                </div>
-              </div>
-              <div className="col-6">
-                <div className="col-6" id="lnUsr">
-                  <label style={{ color: "white" }}>Sobrenome</label>
-                  <input
-                    value={lastName}
-                    onChange={(event) => setLastName(event.target.value)}
-                    type="text"
-                    className="form-control"
-                    placeholder="Insira seu sobrenome"
-                  />
-                </div>
-              </div>
-            </div>
-
             <div className="col">
-              <label className="form-label" style={{ color: "white" }}>
-                E-mail
+              <label
+                htmlFor="fn"
+                className="form-label"
+                style={{ color: "white" }}
+              >
+                Nome
               </label>
               <input
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                value={firstName}
+                onChange={(event) => setFirstName(event.target.value)}
                 type="text"
                 className="form-control"
-                placeholder="Insira seu E-mail"
+                id="fn"
+                placeholder="Insira seu nome"
+                required="true"
               />
             </div>
-            <div className="lineForm">
-              <div className="col-6">
-                <label className="form-label" style={{ color: "white" }}>
-                  Cadastrar uma Senha
-                </label>
-                <input
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  type="text"
-                  className="form-control"
-                  placeholder="Insira uma senha"
-                />
-              </div>
-
-              <div className="col-6">
-                <label className="form-label" style={{ color: "white" }}>
-                  Confirmar Senha
-                </label>
-                <input
-                  value={confpassword}
-                  onChange={(event) => setConfPassword(event.target.value)}
-                  type="text"
-                  className="form-control"
-                  placeholder="Repita sua senha"
-                />
-              </div>
+            <div className="mb-3">
+              <label
+                htmlFor="ln"
+                className="form-label"
+                style={{ color: "white" }}
+              >
+                Sobrenome
+              </label>
+              <input
+                value={lastName}
+                onChange={(event) => setLastName(event.target.value)}
+                type="text"
+                className="form-control"
+                id="ln"
+                placeholder="Insira seu sobrenome"
+                required="true"
+              />
             </div>
+
             <div className="col">
-              <label className="form-label" style={{ color: "white" }}>
+              <label
+                htmlFor="cep"
+                className="form-label"
+                style={{ color: "white" }}
+              >
                 CEP
               </label>
               <input
@@ -162,12 +123,17 @@ export default function Cadastro() {
                 onChange={(event) => setZipcode(event.target.value)}
                 type="text"
                 className="form-control"
-                id="zipcodeUsr"
-                placeholder="Insira o cep"
+                id="cep"
+                placeholder="Insira seu CEP"
+                required="true"
               />
             </div>
             <div className="col">
-              <label className="form-label" style={{ color: "white" }}>
+              <label
+                htmlFor="rua"
+                className="form-label"
+                style={{ color: "white" }}
+              >
                 Rua
               </label>
               <input
@@ -175,12 +141,55 @@ export default function Cadastro() {
                 onChange={(event) => setStreet(event.target.value)}
                 type="text"
                 className="form-control"
-                placeholder="Insira o nome da rua"
+                id="rua"
+                placeholder="Insira a rua"
+                required="true"
               />
             </div>
 
             <div className="col">
-              <label className="form-label" style={{ color: "white" }}>
+              <label
+                htmlFor="Nr"
+                className="form-label"
+                style={{ color: "white" }}
+              >
+                Numero
+              </label>
+              <input
+                value={number}
+                onChange={(event) => setNumber(event.target.value)}
+                type="text"
+                className="form-control"
+                id="Nr"
+                placeholder="o numero da casa"
+                required="true"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="cpl"
+                className="form-label"
+                style={{ color: "white" }}
+              >
+                Complemento
+              </label>
+              <input
+                value={complement}
+                onChange={(event) => setComplement(event.target.value)}
+                type="text"
+                className="form-control"
+                id="cpl"
+                placeholder="complemento"
+              />
+            </div>
+
+            <div className="col">
+              <label
+                htmlFor="brro"
+                className="form-label"
+                style={{ color: "white" }}
+              >
                 Bairro
               </label>
               <input
@@ -188,22 +197,67 @@ export default function Cadastro() {
                 onChange={(event) => setNeighborhood(event.target.value)}
                 type="text"
                 className="form-control"
+                id="brro"
                 placeholder="Insira o bairro"
+                required="true"
+              />
+            </div>
+            <div className="mb-3">
+              <label
+                htmlFor="email"
+                className="form-label"
+                style={{ color: "white" }}
+              >
+                E-mail
+              </label>
+              <input
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                type="email"
+                className="form-control"
+                id="email"
+                placeholder="Insira seu e-mail"
+                required="true"
               />
             </div>
             <div className="col">
-              <label className="form-label" style={{ color: "white" }}>
-                complemento
+              <label
+                htmlFor="snh"
+                className="form-label"
+                style={{ color: "white" }}
+              >
+                Senha
               </label>
               <input
-                value={complement}
-                onChange={(event) => setcomplement(event.target.value)}
-                type="text"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                type="password"
                 className="form-control"
-                placeholder="Insira o complemento"
+                id="snh"
+                placeholder="cadastrar senha"
+                required="true"
+              />
+            </div>
+            <div className="col">
+              <label
+                htmlFor="cnf"
+                className="form-label"
+                style={{ color: "white" }}
+              >
+                Confirmar Senha
+              </label>
+              <input
+                value={confpassword}
+                onChange={(event) => setConfPassword(event.target.value)}
+                type="password"
+                className="form-control"
+                id="cnf"
+                placeholder="confirmar senha"
+                required="true"
               />
             </div>
           </div>
+
           <button
             className="btn btn-lg btn-outline-success"
             style={{ marginTop: "1.5%" }}

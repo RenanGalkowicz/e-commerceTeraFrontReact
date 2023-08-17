@@ -26,7 +26,7 @@ export default function UserPostForm() {
   return (
     <Default>
       <main style={{ margin: "2%" }}>
-        <form onSubmit={handleFormSubmit} id="formCadastroProdutos">
+        <form onSubmit={handleFormSubmit} id="formCadastro">
           <h2 style={{ color: "white" }}>Cadastro de produtos</h2>
           <div>
             <label style={{ color: "white" }}>Nome do produto</label>
